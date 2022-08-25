@@ -50,7 +50,7 @@ public class InvoiceController : ControllerBase
         }
         catch (AlreadyPaidException)
         {
-            return StatusCode(404, new ApiErrorResponse { Message = "Invoice is already paid" });
+            return StatusCode(409, new ApiErrorResponse { Message = "Invoice is already paid" });
         }
         catch (ReadonlyException e)
         {
