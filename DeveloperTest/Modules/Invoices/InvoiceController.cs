@@ -52,7 +52,7 @@ public class InvoiceController : ControllerBase
         {
             return StatusCode(409, new ApiErrorResponse { Message = "Invoice is already paid" });
         }
-        catch (ReadonlyException e)
+        catch (ReadonlyException)
         {
             return StatusCode(405, new ApiErrorResponse { Message = "Invoice is already paid" });
         }

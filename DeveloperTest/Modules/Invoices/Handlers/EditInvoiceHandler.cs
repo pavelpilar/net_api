@@ -29,7 +29,7 @@ namespace DeveloperTest.Modules.Invoices.Handlers
             invoice.Description = request.Description ?? invoice.Description;
             invoice.Amount = request.Amount ?? invoice.Amount;
 
-            ctx.SaveChanges();
+            await ctx.SaveChangesAsync(cancellationToken);
 
             return new EditInvoiceResponse();
         }

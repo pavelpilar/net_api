@@ -27,7 +27,7 @@ namespace DeveloperTest.Modules.Invoices.Handlers
             }
 
             invoice.Paid = true;
-            ctx.SaveChanges();
+            await ctx.SaveChangesAsync(cancellationToken);
 
             return new PayInvoiceResponse();
         }
