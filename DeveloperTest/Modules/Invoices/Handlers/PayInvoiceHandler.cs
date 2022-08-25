@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using DeveloperTest.Models;
+using MediatR;
 
 namespace DeveloperTest.Modules.Invoices.Handlers
 {
@@ -17,12 +18,12 @@ namespace DeveloperTest.Modules.Invoices.Handlers
 
             if(invoice == null)
             {
-                throw new Exception();
+                throw new NotFoundException();
             }
 
             if(invoice.Paid)
             {
-                throw new Exception();
+                throw new AlreadyPaidException();
             }
 
             invoice.Paid = true;
