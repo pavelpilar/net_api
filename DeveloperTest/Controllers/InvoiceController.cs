@@ -1,3 +1,5 @@
+using DeveloperTest.Handlers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeveloperTest.Controllers;
@@ -6,21 +8,34 @@ namespace DeveloperTest.Controllers;
 [Route("api/invoices")]
 public class InvoiceController : ControllerBase
 {
+    private readonly IMediator mediator;
+
+    public InvoiceController(IMediator mediator)
+    {
+        this.mediator = mediator;
+    }
+
     [HttpGet("unpaid")]
-    public ActionResult GetUnpaidInvoices()
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetUnpaidInvoicesResponse))]
+    public async Task<ActionResult> GetUnpaidInvoices()
     {
-        return NoContent();
+        var res = await mediator.Send(new GetUnpaidInvoicesRequest());
+        return Ok(res);
     }
 
-    [HttpPatch("{id}")]
-    public ActionResult EditInvoice()
+    [HttpPatch("{Id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(EditInvoiceResponse))]
+    public async Task<ActionResult> EditInvoice()
     {
-        return NoContent();
+        var res = await mediator.Send(new EditInvoiceRequest());
+        return Ok(res);
     }
 
-    [HttpPost("{id}")]
-    public ActionResult PayInvoice()
+    [HttpPost("{Id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PayInvoiceResponse))]
+    public async Task<ActionResult> PayInvoice([FromRoute] PayInvoiceRequest request)
     {
-        return NoContent();
+        var res = await mediator.Send(request);
+        return Ok(res);
     }
 }
