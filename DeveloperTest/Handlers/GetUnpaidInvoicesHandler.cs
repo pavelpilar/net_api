@@ -1,12 +1,24 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using DeveloperTest.Models;
+using MediatR;
 
 namespace DeveloperTest.Handlers
 {
     public class GetUnpaidInvoicesHandler : IRequestHandler<GetUnpaidInvoicesRequest, GetUnpaidInvoicesResponse>
     {
+        private readonly InvoiceContext ctx;
+        private readonly IMapper mapper;
+
+        public GetUnpaidInvoicesHandler(InvoiceContext ctx, IMapper mapper)
+        {
+            this.ctx = ctx;
+            this.mapper = mapper;
+        }
+
         public async Task<GetUnpaidInvoicesResponse> Handle(GetUnpaidInvoicesRequest request, CancellationToken cancellationToken)
         {
-            return new GetUnpaidInvoicesResponse();
+            var data = ctx.Invoices.Where(x => !x.Paid);
+            return new GetUnpaidInvoicesResponse() { Invoices = mapper.Map<ICollection<InvoiceDTO>>(data) };
         }
     }
 
@@ -16,5 +28,6 @@ namespace DeveloperTest.Handlers
 
     public class GetUnpaidInvoicesResponse
     {
+        public ICollection<InvoiceDTO> Invoices { get; set; }
     }
 }

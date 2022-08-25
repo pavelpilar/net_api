@@ -16,6 +16,7 @@ builder.Services.AddDbContext<InvoiceContext>(configure =>
         .ConfigureWarnings(b => b.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 
