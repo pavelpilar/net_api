@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace DeveloperTest.Handlers
+namespace DeveloperTest.Modules.Invoices.Handlers
 {
     public class PayInvoiceHandler : IRequestHandler<PayInvoiceRequest, PayInvoiceResponse>
     {

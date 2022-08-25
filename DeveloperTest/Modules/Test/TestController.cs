@@ -2,9 +2,9 @@
 using DeveloperTest.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DeveloperTest.Controllers
+namespace DeveloperTest.Modules.Test
 {
-    #if DEBUG
+#if DEBUG
     [ApiController]
     [Route("api/test")]
 
@@ -32,5 +32,5 @@ namespace DeveloperTest.Controllers
             return Ok();
         }
     }
-    #endif
+#endif
 }

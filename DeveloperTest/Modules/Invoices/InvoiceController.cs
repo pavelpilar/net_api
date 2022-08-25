@@ -1,8 +1,8 @@
-using DeveloperTest.Handlers;
+using DeveloperTest.Modules.Invoices.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DeveloperTest.Controllers;
+namespace DeveloperTest.Modules.Invoices;
 
 [ApiController]
 [Route("api/invoices")]

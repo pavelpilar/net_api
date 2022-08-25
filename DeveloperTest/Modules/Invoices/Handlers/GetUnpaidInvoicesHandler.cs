@@ -2,7 +2,7 @@
 using DeveloperTest.Models;
 using MediatR;
 
-namespace DeveloperTest.Handlers
+namespace DeveloperTest.Modules.Invoices.Handlers
 {
     public class GetUnpaidInvoicesHandler : IRequestHandler<GetUnpaidInvoicesRequest, GetUnpaidInvoicesResponse>
     {
