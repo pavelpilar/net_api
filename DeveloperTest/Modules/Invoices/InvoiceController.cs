@@ -2,12 +2,14 @@ using DeveloperTest.Models;
 using DeveloperTest.Modules.Invoices.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
 namespace DeveloperTest.Modules.Invoices;
 
 [ApiController]
+[Authorize(AuthenticationSchemes = "SecretKey")]
 [Route("api/invoices")]
 public class InvoiceController : ControllerBase
 {
