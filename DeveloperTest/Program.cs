@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ToDoDbContext>(configure =>
+builder.Services.AddDbContext<InvoiceContext>(configure =>
     configure.UseInMemoryDatabase("ToDoDatabase")
         .ConfigureWarnings(b => b.Ignore(InMemoryEventId.TransactionIgnoredWarning)));
 
